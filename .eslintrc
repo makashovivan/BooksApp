@@ -1,0 +1,32 @@
+
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "linebreak-style": 0,
+    "@typescript-eslint/dot-notation": "off",
+    "@typescript-eslint/no-implied-eval": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "import/no-cycle": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts?(x)"]
+    }
+  ],
+  "globals": {
+    "window": true,
+    "document": true
+  }
+}
