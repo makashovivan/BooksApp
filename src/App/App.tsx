@@ -3,9 +3,10 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   clearBooks, getBooksAsync, selectBooks, selectStatus,
 } from '../store/slices/BooksSlice/BooksSlice';
+import BookListItem from '../components/BookListItem';
 import debounce from '../common/debounce';
 import {
-  SearchContainer, SearchInput, Wrapper, Spinner,
+  SearchContainer, SearchInput, Wrapper, Spinner, BooksList,
 } from './styles';
 
 const SpinnerGif = require('../../public/assets/spinner.gif');
@@ -17,6 +18,7 @@ const App: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const books = useAppSelector(selectBooks);
   const isBooksLoading = useAppSelector(selectStatus) === 'loading';
+  const isNotFound = !!inputValue.length && !isBooksLoading && (books.length === 0);
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -35,9 +37,11 @@ const App: React.FC = () => {
           placeholder="Book title"
         />
         {isBooksLoading && <Spinner src={SpinnerGif.default} alt="spinner" />}
-        <div>{inputValue}</div>
+        <BooksList>
+          {isNotFound && <div>Books not found</div>}
+          {books.map((book, index) => <BookListItem book={book} key={index.toString()} />)}
+        </BooksList>
       </SearchContainer>
-      {books.map((book, index) => <div key={index.toString()}>{book.title}</div>)}
     </Wrapper>
   );
 };

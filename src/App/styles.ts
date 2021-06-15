@@ -22,6 +22,7 @@ export const SearchContainer = styled.div`
 export const SearchInput = styled.input`
   flex-grow: 1;
   color: #BFD2FF;
+  font-size: 1.8rem;
   line-height: 2.4rem;
   vertical-align: middle;
   border-style: none;
@@ -32,4 +33,16 @@ export const SearchInput = styled.input`
 export const Spinner = styled.img`
   width: 26px;
   height: 26px;
+`;
+
+export const BooksList = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style-type: none;
+  text-align: left;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: aliceblue;
 `;
