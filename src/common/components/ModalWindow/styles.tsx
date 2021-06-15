@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { stylesConfig } from '../../config';
 
 export const WindowOverlay = styled.div`
-  background-color: ${stylesConfig.modalWindowOverlay};
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
   bottom: 0;
