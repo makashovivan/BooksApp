@@ -215,7 +215,7 @@ function fetchBooks(titleQuery, limit) {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, fetch("http://openlibrary.org/search.json?title=" + titleQuery + "&limit=" + limit)];
+                case 0: return [4, fetch("https://openlibrary.org/search.json?title=" + titleQuery + "&limit=" + limit)];
                 case 1:
                     res = _a.sent();
                     return [4, res.json()];
@@ -225,7 +225,7 @@ function fetchBooks(titleQuery, limit) {
     });
 }
 exports.fetchBooks = fetchBooks;
-var getCoverUrl = function (id, size) { return "http://covers.openlibrary.org/b/id/" + id + "-" + size + ".jpg"; };
+var getCoverUrl = function (id, size) { return "https://covers.openlibrary.org/b/id/" + id + "-" + size + ".jpg"; };
 exports.getCoverUrl = getCoverUrl;
 
 
