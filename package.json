@@ -8,7 +8,9 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "lint": "eslint . --ext .ts,.tsx",
-    "lint-fix": "eslint . --ext .ts,.tsx --fix"
+    "lint-fix": "eslint . --ext .ts,.tsx --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/makashovivan/BooksApp/issues"
   },
-  "homepage": "https://github.com/makashovivan/BooksApp#readme",
+  "homepage": "https://github.com/makashovivan.github.io/BooksApp",
   "devDependencies": {
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
@@ -40,6 +42,7 @@
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^5.3.1",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.2.2",

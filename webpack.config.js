@@ -1,35 +1,30 @@
-const path = require("path")
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackNotifierPlugin = require('webpack-notifier')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
-  const watchMode = argv.liveReload || false
-  const modeEnv = argv.mode || 'development'
-  const isProd = modeEnv === 'production'
+  const watchMode = argv.liveReload || false;
+  const modeEnv = argv.mode || 'development';
+  const isProd = modeEnv === 'production';
 
   const optimizations = {
     splitChunks: {
       cacheGroups: {
-          vendors: {
-              name: 'vendors',
-              test: /node_modules/,
-              chunks: 'all',
-              enforce: true,
-          },
+        vendors: {
+          name: 'vendors',
+          test: /node_modules/,
+          chunks: 'all',
+          enforce: true,
+        },
       },
     },
     minimizer: [],
-  }
-
-  // if (isProd) {
-  //     optimizations.minimizer.push(new UglifyJsPlugin())
-  // }
+  };
 
   return {
     devServer: {
-      contentBase: path.join(__dirname, "dist"),
+      contentBase: path.join(__dirname, 'build'),
       compress: true,
       port: 4200,
       watchContentBase: true,
@@ -40,8 +35,8 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-          template: './public/index.html',
-          favicon: './public/favicon.ico',
+        template: './public/index.html',
+        favicon: './public/favicon.ico',
       }),
       new WebpackNotifierPlugin({ alwaysNotify: false }),
     ],
@@ -75,8 +70,8 @@ module.exports = (env, argv) => {
     },
     output: {
       filename: watchMode ? 'assets/[name].[hash].js' : 'assets/[name].[chunkhash].js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'build'),
     },
-    optimization: optimizations
-  }
+    optimization: optimizations,
+  };
 };
